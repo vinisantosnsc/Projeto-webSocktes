@@ -2,6 +2,8 @@
 <body>
   <h2>Mario <span> CHAT</span></h2>
   <main id="canvas"></main>
+
+  <!-- Seção de Mudança de Id. Nota: ainda não implementado -->
   <div id="boxId">
     <form id="form2" action="">
       <label for="name">Change your ID</label>
@@ -10,6 +12,7 @@
     </form>
   </div>
 
+  <!-- Seção de troca de mensagens -->
   <div id="boxChat">
     <h1>CHAT</h1>
     <ul id="messages"></ul>
@@ -20,6 +23,7 @@
 </body>
 
 <script>
+
   // Preparação
   const $canvas = document.getElementById("canvas");
   let users = {};
@@ -42,11 +46,13 @@
     `;
   }
 </script>
+
 <!-- Carregando Socket io -->
 <script src="/socket.io/socket.io.js"></script>
 <script>
   var socket = io();
 
+  // JOGO MULTIPLAYER COM ID
   socket.on("connect", function () {
     user = { id: socket.id };
     users[socket.id] = user;
@@ -69,6 +75,7 @@
     renderUsers();
   });
 
+  // CHAT
   var form = document.getElementById("form");
   var input = document.getElementById("input");
 

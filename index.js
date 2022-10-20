@@ -20,6 +20,7 @@ app.get("/", (req, res) => {
 let users = {};
 
 io.on("connection", (socket) => {
+  // JOGO
   console.log(`[${socket.id}] LOG: USER_CONNECTED`);
   users[socket.id] = { id: socket.id, x: 0, y: 0 };
 
@@ -35,6 +36,7 @@ io.on("connection", (socket) => {
     io.emit("ON_USERS_UPDATE", JSON.stringify(users));
   });
 
+  // CHAT
   socket.on('chat message', (msg) => {
     console.log(`[${socket.id}] MSG: ${msg}`);
   });
